@@ -7,7 +7,6 @@ import {Provider} from 'react-redux'
 import reducer from './reducer'
 import Main from './components/Main'
 import Socket from './socket'
-import {setState} from './action_creators'
 import {remoteAction, logger} from './middleware'
 
 /* SAMPLE DATA */
