@@ -1,7 +1,7 @@
-import React from 'react';
-import ChannelSection from './channels/ChannelSection.jsx';
-import MessageSection from './messages/MessageSection.jsx';
-import UserSection from './users/UserSection.jsx';
+import React from 'react'
+import ChannelSection from './channels/ChannelSection.jsx'
+import MessageSection from './messages/MessageSection.jsx'
+import UserSection from './users/UserSection.jsx'
 
 class Main extends React.Component {
   render() {
@@ -17,4 +17,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default Main

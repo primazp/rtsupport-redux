@@ -1,9 +1,9 @@
-import React from 'react';
-import fecha from 'fecha';
-import {connect} from 'react-redux';
+import React from 'react'
+import fecha from 'fecha'
+import {connect} from 'react-redux'
 
 const Message = ({message}) => {
-  console.log(message);
+  console.log(message)
   let createdAt = fecha.format(message.createdAt, 'HH:mm:ss MM/DD/YYYY')
   return (
     <li className='message'>
@@ -16,4 +16,4 @@ const Message = ({message}) => {
   )
 }
 
-export default connect()(Message);
+export default connect()(Message)

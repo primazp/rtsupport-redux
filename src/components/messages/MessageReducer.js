@@ -6,9 +6,9 @@ const message = (state, action) => {
         body: action.body,
         author: action.author,
         createdAt: new Date()
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
 
@@ -18,10 +18,10 @@ const messages = (state = [], action) => {
       return [
         ...state,
         message(undefined, action)
-      ];
+      ]
     default:
-      return state;
+      return state
   }
 }
 
-export default messages;
+export default messages

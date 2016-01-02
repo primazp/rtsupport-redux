@@ -5,10 +5,10 @@ const users = (state = [], action) => {
         if (user.current) {
           return Object.assign({}, user, { name: action.name })
         } else return user
-      });
+      })
     default:
-      return state;
+      return state
   }
 }
 
-export default users;
+export default users

@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import UserList from './UserList.jsx';
-import UserForm from './UserForm.jsx';
+import React from 'react'
+import {connect} from 'react-redux'
+import UserList from './UserList.jsx'
+import UserForm from './UserForm.jsx'
 
 const UserSection = () => (
   <div className='support panel panel-primary'>
@@ -13,6 +13,6 @@ const UserSection = () => (
       <UserForm />
     </div>
   </div>
-);
+)
 
-export default connect()(UserSection);
+export default connect()(UserSection)

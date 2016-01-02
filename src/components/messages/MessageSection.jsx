@@ -1,7 +1,7 @@
-import React from 'react';
-import MessageList from './MessageList.jsx';
-import MessageForm from './MessageForm.jsx';
-import {connect} from 'react-redux';
+import React from 'react'
+import MessageList from './MessageList.jsx'
+import MessageForm from './MessageForm.jsx'
+import {connect} from 'react-redux'
 
 const MessageSection = ({activeChannel}) => {
   return (
@@ -23,4 +23,4 @@ const mapStateMessageSectionProps = (state) => {
   }
 }
 
-export default connect(mapStateMessageSectionProps)(MessageSection);
+export default connect(mapStateMessageSectionProps)(MessageSection)

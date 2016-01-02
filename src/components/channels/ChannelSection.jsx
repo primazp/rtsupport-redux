@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import ChannelList from './ChannelList';
-import ChannelForm from './ChannelForm';
+import React from 'react'
+import {connect} from 'react-redux'
+import ChannelList from './ChannelList'
+import ChannelForm from './ChannelForm'
 
 const ChannelSection = () => (
   <div className='support panel panel-primary'>
@@ -13,6 +13,6 @@ const ChannelSection = () => (
       <ChannelForm />
     </div>
   </div>
-);
+)
 
-export default connect()(ChannelSection);
+export default connect()(ChannelSection)

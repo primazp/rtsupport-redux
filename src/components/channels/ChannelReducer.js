@@ -5,11 +5,11 @@ const channel = (state, action) => {
         id: action.id,
         name: action.name,
         completed: false
-      };
+      }
     case 'CHANNEL_SET_ACTIVE':
-      return Object.assign({}, state, { active: state.id === action.id });
+      return Object.assign({}, state, { active: state.id === action.id })
     default:
-      return state;
+      return state
   }
 }
 
@@ -19,14 +19,14 @@ const channels = (state = [], action) => {
       return [
         ...state,
         channel(undefined, action)
-      ];
+      ]
     case 'CHANNEL_SET_ACTIVE':
-      return state.map(c => channel(c, action));
+      return state.map(c => channel(c, action))
     case 'CHANNEL_REMOVE':
-      return state.filter(c => c !== action.channel);
+      return state.filter(c => c !== action.channel)
     default:
-      return state;
+      return state
   }
 }
 
-export default channels;
+export default channels

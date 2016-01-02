@@ -1,4 +1,4 @@
-let autoId = 3;
+let autoId = 3
 export function addMessage(body, author) {
   return {
     type: 'MESSAGE_ADD',

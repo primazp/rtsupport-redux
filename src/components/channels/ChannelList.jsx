@@ -1,14 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import Channel from './Channel.jsx';
+import React from 'react'
+import {connect} from 'react-redux'
+import Channel from './Channel.jsx'
 
 const ChannelList = ({channels}) => (
   <ul>
-    {channels.map(chan =>
-      <Channel key={chan.id} channel={chan} />
-    )}
+    { channels.map(chan => <Channel key={chan.id} channel={chan} />) }
   </ul>
-);
+)
 
 const mapStateChannelListProps = (state) => {
   return {
@@ -16,4 +14,4 @@ const mapStateChannelListProps = (state) => {
   }
 }
 
-export default connect(mapStateChannelListProps)(ChannelList);
+export default connect(mapStateChannelListProps)(ChannelList)
