@@ -2,7 +2,6 @@ require('./main.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router, {Route} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
@@ -11,23 +10,24 @@ import Socket from './socket';
 import {setState} from './action_creators';
 import {remoteAction, logger} from './middleware';
 
+/* SAMPLE DATA */
 let defaultStore = {
   channels: [
     {id: 0, name: 'Hardware Support'},
     {id: 2, name: 'Software Support'}
+  ],
+  users: [
+    {name: 'Anonymous', id: 1, current: true}
   ]
 }
 
 let socket = new Socket();
-socket.on('state', state =>
-  store.dispatch(setState(state))
-);
-socket.on('connect', () => {
+socket.on('connect', (state = defaultStore) => {
   let createStoreWithMiddleware = applyMiddleware(
     remoteAction(socket),
     logger
   )(createStore);
-  const store = createStoreWithMiddleware(reducer, defaultStore);
+  const store = createStoreWithMiddleware(reducer, state);
 
   ReactDOM.render(
     <Provider store={store}>

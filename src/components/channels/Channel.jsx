@@ -17,9 +17,6 @@ const Channel = ({channel, onChannelClick, onRemoveClick}) => {
   )
 };
 
-const mapStateChannelToProps = (state, ownProps) => {
-  return { active: ownProps.channel === state.activeChannel }
-}
 const mapDispatchChannelProps = (dispatch, ownProps) => {
   return {
     onChannelClick: () => { dispatch(setActiveChannel(ownProps.channel)); },
@@ -27,4 +24,4 @@ const mapDispatchChannelProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateChannelToProps, mapDispatchChannelProps)(Channel);
+export default connect(undefined, mapDispatchChannelProps)(Channel);
