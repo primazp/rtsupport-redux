@@ -15,15 +15,9 @@ describe('MessageList', () => {
 
   it('renders list of messages', () => {
     const renderer = TestUtils.createRenderer()
-    renderer.render(
-      <MessageList {...props} />
-    )
+    renderer.render(<MessageList {...props} />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <ul>
-        <Message message={message} />
-      </ul>
-    )
-    expect(actual).toEqualJSX(expected)
+    const expected = (<Message message={message} />)
+    expect(actual).toIncludeJSX(expected)
   })
 })

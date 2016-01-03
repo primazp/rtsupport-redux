@@ -11,21 +11,9 @@ expect.extend(expectJSX)
 describe('ChannelSection', () => {
   it('renders ChannelSection', () => {
     const renderer = TestUtils.createRenderer()
-    renderer.render(
-      <ChannelSection />
-    )
+    renderer.render(<ChannelSection />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <div className='support panel panel-primary'>
-        <div className='panel-heading'>
-          <strong>Channels</strong>
-        </div>
-        <div className='panel-body channels'>
-          <ChannelList />
-          <ChannelForm />
-        </div>
-      </div>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(<ChannelList />)
+    expect(actual).toIncludeJSX(<ChannelForm />)
   })
 })

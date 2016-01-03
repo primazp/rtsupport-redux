@@ -12,13 +12,8 @@ describe('User', () => {
   const renderer = TestUtils.createRenderer()
 
   it('renders user', () => {
-    renderer.render(
-      <User {...props} />
-    )
+    renderer.render(<User {...props} />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <li><a>Lorem</a></li>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(props.user.name)
   })
 })

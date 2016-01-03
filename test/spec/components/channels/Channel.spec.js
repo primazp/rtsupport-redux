@@ -14,31 +14,15 @@ describe('Channel', () => {
   const renderer = TestUtils.createRenderer()
 
   it('renders channel', () => {
-    renderer.render(
-      <Channel {...props} />
-    )
+    renderer.render(<Channel {...props} />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <li className="">
-        <a onClick={function noRefCheck() {}}>Lorem</a>&nbsp;
-        <a onClick={function noRefCheck() {}} style={{color: 'red'}}>&Chi;</a>
-      </li>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(props.channel.name)
   })
 
   it('renders active channel', () => {
     props.channel.active = true
-    renderer.render(
-      <Channel {...props} />
-    )
-    const actual = renderer.getRenderOutput()
-    const expected = (
-      <li className="active">
-        <a onClick={function noRefCheck() {}}>Lorem</a>&nbsp;
-        <a onClick={function noRefCheck() {}} style={{color: 'red'}}>&Chi;</a>
-      </li>
-    )
-    expect(actual).toEqualJSX(expected)
+    renderer.render(<Channel {...props} />)
+    const actual = renderer.getRenderOutput().props.className.includes('active')
+    expect(actual).toEqual(true)
   })
 })

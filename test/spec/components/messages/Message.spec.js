@@ -17,19 +17,10 @@ describe('Message', () => {
   const renderer = TestUtils.createRenderer()
 
   it('renders message', () => {
-    renderer.render(
-      <Message {...props} />
-    )
+    renderer.render(<Message {...props} />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <li className='message'>
-        <div className='author'>
-          <strong>Anonymous</strong>
-          <i className='timestamp'>14:26:41 01/03/2016</i>
-        </div>
-        <div className='body'>Lorem</div>
-      </li>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX('14:26:41 01/03/2016')
+    expect(actual).toIncludeJSX(props.message.body)
+    expect(actual).toIncludeJSX(props.message.author)
   })
 })

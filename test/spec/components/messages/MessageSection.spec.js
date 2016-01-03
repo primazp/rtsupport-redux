@@ -9,46 +9,23 @@ import {MessageSection} from '../../../../src/components/messages/MessageSection
 expect.extend(expectJSX)
 
 describe('MessageSection', () => {
+  function renderedElement(props = {}) {
+    const renderer = TestUtils.createRenderer()
+    renderer.render(<MessageSection {...props} />)
+    return renderer.getRenderOutput()
+  }
+
   it('renders MessageSection with activeChannel', () => {
     let props = {
       activeChannel: {name: 'Lorem'}
     }
-    const renderer = TestUtils.createRenderer()
-    renderer.render(
-      <MessageSection {...props} />
-    )
-    const actual = renderer.getRenderOutput()
-    const expected = (
-      <div className='messages-container panel panel-default'>
-        <div className='panel-heading'>
-          <strong>Lorem</strong>
-        </div>
-        <div className='panel-body messages'>
-          <MessageList />
-          <MessageForm />
-        </div>
-      </div>
-    )
-    expect(actual).toEqualJSX(expected)
+    const actual = renderedElement(props)
+    expect(actual).toIncludeJSX(<MessageList />)
+    expect(actual).toIncludeJSX(<MessageForm />)
+    expect(actual).toIncludeJSX(props.activeChannel.name)
   })
 
   it('renders MessageSection without activeChannel', () => {
-    const renderer = TestUtils.createRenderer()
-    renderer.render(
-      <MessageSection />
-    )
-    const actual = renderer.getRenderOutput()
-    const expected = (
-      <div className='messages-container panel panel-default'>
-        <div className='panel-heading'>
-          <strong>Select Channel</strong>
-        </div>
-        <div className='panel-body messages'>
-          <MessageList />
-          <MessageForm />
-        </div>
-      </div>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(renderedElement()).toIncludeJSX('Select Channel')
   })
 })

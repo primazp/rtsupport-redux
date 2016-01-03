@@ -12,37 +12,24 @@ describe('MessageForm', () => {
     currentUser: {name: 'John Doe'}
   }
   const renderer = TestUtils.createRenderer()
+  const expected = (
+    <input type='text'
+      ref={node => {input = node }}
+      className='form-control'
+      placeholder='Message Text'></input>
+  )
+
+  function renderedForm(){
+    renderer.render(<AddMessage {...props} />)
+    return renderer.getRenderOutput()
+  }
 
   it('renders form', () => {
-    renderer.render(
-      <AddMessage {...props} />
-    )
-    const actual = renderer.getRenderOutput()
-    const expected = (
-      <form onSubmit={function noRefCheck() {}}>
-        <div className='form-group'>
-          <input type='text'
-            ref={node => {input = node }}
-            className='form-control'
-            placeholder='Message Text'></input>
-        </div>
-      </form>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(renderedForm()).toIncludeJSX(expected)
   })
 
-  it('renders disabled form', () => {
+  it('does not renders input', () => {
     props.activeChannel = null
-    renderer.render(
-      <AddMessage {...props} />
-    )
-    const actual = renderer.getRenderOutput()
-    const expected = (
-      <form onSubmit={function noRefCheck() {}}>
-        <div className='form-group'>
-        </div>
-      </form>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(renderedForm()).toNotIncludeJSX(expected)
   })
 })

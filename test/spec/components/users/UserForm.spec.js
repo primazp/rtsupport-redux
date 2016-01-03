@@ -10,22 +10,16 @@ describe('UserForm', () => {
     dispatch: expect.createSpy()
   }
   const renderer = TestUtils.createRenderer()
-
-  it('renders form', () => {
-    renderer.render(
-      <EditUser {...props} />
-    )
+  
+  it('renders input', () => {
+    renderer.render(<EditUser {...props} />)
     const actual = renderer.getRenderOutput()
     const expected = (
-      <form onSubmit={function noRefCheck() {}}>
-        <div className='form-group'>
-          <input type='text'
-            ref={node => {input = node }}
-            className='form-control'
-            placeholder='Set Your Name'></input>
-        </div>
-      </form>
+      <input type='text'
+        ref={node => {input = node }}
+        className='form-control'
+        placeholder='Set Your Name'></input>
     )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(expected)
   })
 })

@@ -10,22 +10,16 @@ describe('ChannelForm', () => {
     dispatch: expect.createSpy()
   }
   const renderer = TestUtils.createRenderer()
-
-  it('renders form', () => {
-    renderer.render(
-      <AddChannel {...props} />
-    )
+  
+  it('renders input', () => {
+    renderer.render(<AddChannel {...props} />)
     const actual = renderer.getRenderOutput()
     const expected = (
-      <form onSubmit={function noRefCheck() {}}>
-        <div className='form-group'>
-          <input type='text'
-            ref={node => {input = node }}
-            className='form-control'
-            placeholder='Channel Name'></input>
-        </div>
-      </form>
+      <input type='text'
+        ref={node => {input = node }}
+        className='form-control'
+        placeholder='Channel Name'></input>
     )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(expected)
   })
 })

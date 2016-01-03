@@ -15,15 +15,8 @@ describe('ChannelList', () => {
 
   it('renders list of channels', () => {
     const renderer = TestUtils.createRenderer()
-    renderer.render(
-      <ChannelList {...props} />
-    )
+    renderer.render(<ChannelList {...props} />)
     const actual = renderer.getRenderOutput()
-    const expected = (
-      <ul>
-        <Channel channel={channel} />
-      </ul>
-    )
-    expect(actual).toEqualJSX(expected)
+    expect(actual).toIncludeJSX(<Channel channel={channel} />)
   })
 })
