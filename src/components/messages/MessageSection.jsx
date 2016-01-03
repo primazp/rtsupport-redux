@@ -3,18 +3,22 @@ import MessageList from './MessageList.jsx'
 import MessageForm from './MessageForm.jsx'
 import {connect} from 'react-redux'
 
-const MessageSection = ({activeChannel}) => {
-  return (
-    <div className='messages-container panel panel-default'>
-      <div className='panel-heading'>
-        <strong>{activeChannel ? activeChannel.name : 'Select Channel'}</strong>
+export class MessageSection extends React.Component {
+  render() {
+    let header = this.props.activeChannel ? this.props.activeChannel.name : 'Select Channel'
+
+    return (
+      <div className='messages-container panel panel-default'>
+        <div className='panel-heading'>
+          <strong>{header}</strong>
+        </div>
+        <div className='panel-body messages'>
+          <MessageList />
+          <MessageForm />
+        </div>
       </div>
-      <div className='panel-body messages'>
-        <MessageList />
-        <MessageForm />
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 const mapStateMessageSectionProps = (state) => {
