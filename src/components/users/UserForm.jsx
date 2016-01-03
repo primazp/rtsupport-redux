@@ -6,9 +6,10 @@ let EditUser = ({ dispatch }) => {
   let input
 
   return (
-    <form onSubmit={() => {
-        dispatch(setUserName(input.value))
-        input.value = '' }}>
+    <form onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(setUserName(input.value));
+        input.value = ''; }}>
       <div className='form-group'>
         <input type='text'
           ref={node => {input = node }}

@@ -8,7 +8,8 @@ describe('export', () => {
     expect(store.getState()).toEqual({
       channels: [],
       users: [],
-      messages: []
+      messages: [],
+      connected: false
     })
   })
 })

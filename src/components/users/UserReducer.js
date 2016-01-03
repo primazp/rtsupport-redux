@@ -1,11 +1,18 @@
+const user = (state, action) => {
+  switch(action.type) {
+    case 'USER_SET_NAME':
+      if (state.current) {
+        return Object.assign({}, state, { name: action.name })
+      } else return state
+    default:
+      return state
+  }
+}
+
 const users = (state = [], action) => {
   switch(action.type) {
     case 'USER_SET_NAME':
-      return state.map(user => {
-        if (user.current) {
-          return Object.assign({}, user, { name: action.name })
-        } else return user
-      })
+      return state.map(u => user(u, action))
     default:
       return state
   }

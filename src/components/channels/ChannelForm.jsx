@@ -6,9 +6,10 @@ let AddChannel = ({ dispatch }) => {
   let input
 
   return (
-    <form onSubmit={() => {
-        dispatch(addChannel(input.value))
-        input.value = '' }}>
+    <form onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(addChannel(input.value));
+        input.value = ''; }}>
       <div className='form-group'>
         <input type='text'
           ref={node => {input = node }}

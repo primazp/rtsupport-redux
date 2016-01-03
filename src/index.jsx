@@ -8,9 +8,10 @@ import reducer from './reducer'
 import Main from './components/Main'
 import Socket from './socket'
 import {remoteAction, logger} from './middleware'
+import {connect} from './components/connect'
 
 /* SAMPLE DATA */
-let defaultStore = {
+const defaultStore = {
   channels: [
     {id: 0, name: 'Hardware Support'},
     {id: 2, name: 'Software Support'}
@@ -21,16 +22,14 @@ let defaultStore = {
 }
 
 let socket = new Socket()
+
 socket.on('connect', (state = defaultStore) => {
   let createStoreWithMiddleware = applyMiddleware(
     remoteAction(socket),
     logger
   )(createStore)
   const store = createStoreWithMiddleware(reducer, state)
-
-  socket.on('action', (action) => {
-    store.dispatch(action)
-  })
+  store.dispatch(connect(true))
 
   ReactDOM.render(
     <Provider store={store}>
@@ -41,4 +40,9 @@ socket.on('connect', (state = defaultStore) => {
 
   socket.emit('CHANNEL_SUBSCRIBE')
   socket.emit('USER_SUBSCRIBE')
+})
+
+socket.on('action', (action) => {
+  console.debug('action from server', action)
+  // store.dispatch(action)
 })

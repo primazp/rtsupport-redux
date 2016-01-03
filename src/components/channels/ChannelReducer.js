@@ -3,8 +3,7 @@ const channel = (state, action) => {
     case 'CHANNEL_ADD':
       return {
         id: action.id,
-        name: action.name,
-        completed: false
+        name: action.name
       }
     case 'CHANNEL_SET_ACTIVE':
       return Object.assign({}, state, { active: state.id === action.id })

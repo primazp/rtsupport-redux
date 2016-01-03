@@ -12,9 +12,10 @@ let AddMessage = ({ activeChannel, currentUser, dispatch }) => {
   }
 
   return (
-    <form onSubmit={() => {
-        dispatch(addMessage(input.value, currentUser.name))
-        input.value = '' }}>
+    <form onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(addMessage(input.value, currentUser.name));
+        input.value = ''; }}>
       <div className='form-group'>
         {input}
       </div>
