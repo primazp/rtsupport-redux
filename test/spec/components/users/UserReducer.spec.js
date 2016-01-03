@@ -1,5 +1,5 @@
 import expect from 'expect'
-import deepFreeze from '../../../helpers/deep-freeze'
+import deepFreeze from '../../../utils/deep-freeze'
 import users from '../../../../src/components/users/UserReducer'
 import {setUserName} from '../../../../src/components/users/UserActions'
 
