@@ -9,7 +9,7 @@ describe('Message', () => {
   let props = {
     message: {
       body: 'Lorem',
-      author: 'Anonymous',
+      author: { name: 'Anonymous' },
       id: 0,
       createdAt: new Date('Sun Jan 03 2016 14:26:41 GMT+0300 (MSK)')
     }
@@ -21,6 +21,6 @@ describe('Message', () => {
     const actual = renderer.getRenderOutput()
     expect(actual).toIncludeJSX('14:26:41 01/03/2016')
     expect(actual).toIncludeJSX(props.message.body)
-    expect(actual).toIncludeJSX(props.message.author)
+    expect(actual).toIncludeJSX(props.message.author.name)
   })
 })

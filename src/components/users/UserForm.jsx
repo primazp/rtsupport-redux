@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {setUserName} from './UserActions'
+import {setUserName} from './CurrentUserReducer'
 
 export class EditUser extends React.Component {
   render() {

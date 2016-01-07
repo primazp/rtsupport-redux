@@ -1,4 +1,4 @@
-require('./main.css')
+require('./styles/main.scss')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -7,8 +7,11 @@ import {Provider} from 'react-redux'
 import reducer from './reducer'
 import Main from './components/Main'
 import Socket from './socket'
-import {remoteAction, logger} from './middleware'
+import {remoteAction} from './middleware'
 import {connect} from './components/connect'
+import createLogger from 'redux-logger'
+import promiseMiddleware from 'redux-simple-promise'
+import {AppLoader} from './components/Loader'
 
 /* SAMPLE DATA */
 const defaultStore = {
@@ -17,15 +20,22 @@ const defaultStore = {
     {id: 2, name: 'Software Support'}
   ],
   users: [
-    {name: 'Anonymous', id: 1, current: true}
+    {id: 0, name: 'Jane Doe'}
   ]
 }
 
 let socket = new Socket()
+const logger = createLogger()
+
+ReactDOM.render(
+  <AppLoader />,
+  document.getElementById('app')
+)
 
 socket.on('connect', (state = defaultStore) => {
   let createStoreWithMiddleware = applyMiddleware(
     remoteAction(socket),
+    promiseMiddleware(),
     logger
   )(createStore)
   const store = createStoreWithMiddleware(reducer, state)

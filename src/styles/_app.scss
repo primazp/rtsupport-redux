@@ -23,6 +23,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.users {
+  .current {
+    font-weight: bold;
+    font-style: italic;
+    color: darkgreen;
+  }
+}
 .channels, .users{
   height: 88%;
 }

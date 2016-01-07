@@ -8,6 +8,11 @@ describe('export', () => {
     expect(store.getState()).toEqual({
       channels: [],
       users: [],
+      currentUser: {
+        name: 'Anonymous',
+        id: 1,
+        current: true
+      },
       messages: [],
       connected: false
     })

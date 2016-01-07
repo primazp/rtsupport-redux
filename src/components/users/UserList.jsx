@@ -13,7 +13,12 @@ export class UserList extends React.Component {
 }
 
 const mapStateUserListProps = (state) => {
-  return { users: state.users }
+  return {
+    users: [
+      state.currentUser,
+      ...state.users
+    ]
+  }
 }
 
 export default connect(mapStateUserListProps)(UserList)

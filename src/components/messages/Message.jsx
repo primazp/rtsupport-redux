@@ -9,7 +9,7 @@ export class Message extends React.Component {
     return (
       <li className='message'>
         <div className='author'>
-          <strong>{this.props.message.author}</strong>
+          <strong>{this.props.message.author.name}</strong>
           <i className='timestamp'>{createdAt}</i>
         </div>
         <div className='body'>{this.props.message.body}</div>

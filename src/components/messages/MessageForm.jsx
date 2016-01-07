@@ -15,7 +15,7 @@ export class AddMessage extends React.Component {
     return (
       <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.dispatch(addMessage(input.value, this.props.currentUser.name));
+          this.props.dispatch(addMessage(input.value, currentUser));
           input.value = ''; }}>
         <div className='form-group'>
           {input}
@@ -27,7 +27,7 @@ export class AddMessage extends React.Component {
 const mapStateMessageFormProps = (state) => {
   return {
     activeChannel: state.channels.find(c => c.active),
-    currentUser: state.users.find(u => u.current)
+    currentUser: state.currentUser
   }
 }
 export default connect(mapStateMessageFormProps)(AddMessage)
