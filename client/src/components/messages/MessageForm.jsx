@@ -15,7 +15,13 @@ export class AddMessage extends React.Component {
     return (
       <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.dispatch(addMessage(input.value, currentUser));
+          this.props.dispatch(
+            addMessage(
+              input.value,
+              this.props.currentUser,
+              this.props.activeChannel.id
+            )
+          );
           input.value = ''; }}>
         <div className='form-group'>
           {input}

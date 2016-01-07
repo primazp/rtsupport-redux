@@ -1,7 +1,6 @@
 import expect from 'expect'
 import deepFreeze from '../../../utils/deep-freeze'
 import messages from '../../../../src/components/messages/MessageReducer'
-import {addMessage} from '../../../../src/components/messages/MessageActions'
 
 describe('reducer', () => {
   it('can return default', () => {
@@ -11,7 +10,11 @@ describe('reducer', () => {
   it('can add messages', () => {
     const state = []
     deepFreeze(state)
-    expect(messages(state, addMessage('Lorem'))).toEqual([
+    const action = {
+      type: 'MESSAGE_ADD',
+      message: { body: 'Lorem', id: 3, createdAt: new Date(), author: undefined }
+    }
+    expect(messages(state, action)).toEqual([
       { body: 'Lorem', id: 3, createdAt: new Date(), author: undefined }
     ])
   })

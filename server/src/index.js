@@ -1,3 +1,5 @@
+'use strict';
+
 var WebSocketServer = require('ws').Server;
 var http = require('http');
 var express = require('express');
@@ -19,15 +21,7 @@ console.log('websocket server created');
 wss.on('connection', function(ws) {
   ws.send(JSON.stringify({
     name: 'state',
-    data: {
-      channels: [
-        {id: 0, name: 'Hardware Support'},
-        {id: 2, name: 'Software Support'}
-      ],
-      users: [
-        {id: 0, name: 'Jane Doe'}
-      ]
-    }
+    data: store.getState()
   }));
   console.log('websocket connection open')
 

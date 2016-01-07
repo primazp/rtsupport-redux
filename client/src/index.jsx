@@ -34,8 +34,8 @@ socket.on('state', (state) => {
     </Provider>,
     document.getElementById('app')
   )
-})
 
-socket.on('action', (action) => {
-  store.dispatch(action)
+  socket.on('action', (action) => {
+    store.dispatch(action)
+  })
 })

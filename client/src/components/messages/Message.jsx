@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 export class Message extends React.Component {
   render() {
-    let createdAt = fecha.format(this.props.message.createdAt, 'HH:mm:ss MM/DD/YYYY')
+    let createdAt = fecha.format(new Date(this.props.message.createdAt), 'HH:mm:ss MM/DD/YYYY')
 
     return (
       <li className='message'>

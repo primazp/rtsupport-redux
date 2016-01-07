@@ -17,7 +17,7 @@ const messages = (state = [], action) => {
     case 'MESSAGE_ADD':
       return [
         ...state,
-        message(undefined, action)
+        action.message
       ]
     default:
       return state

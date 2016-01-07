@@ -1,12 +1,12 @@
 let autoId = 3
-export function addMessage(body, author) {
+export function addMessage(body, author, channel_id) {
   return {
     meta: {
       server: true
     },
     type: 'MESSAGE_ADD',
-    id: autoId++,
     author,
-    body
+    body,
+    channel_id
   }
 }

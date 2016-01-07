@@ -1,7 +1,7 @@
 import expect from 'expect'
 import deepFreeze from '../../../utils/deep-freeze'
 import channels from '../../../../src/components/channels/ChannelReducer'
-import {addChannel, removeChannel, setActiveChannel} from '../../../../src/components/channels/ChannelActions'
+import {removeChannel, setActiveChannel} from '../../../../src/components/channels/ChannelActions'
 
 describe('reducer', () => {
   it('can return default', () => {
@@ -11,7 +11,11 @@ describe('reducer', () => {
   it('can add channel', () => {
     const state = []
     deepFreeze(state)
-    expect(channels(state, addChannel('Lorem'))).toEqual([
+    const action = {
+      type: 'CHANNEL_ADD',
+      channel: { name: 'Lorem', id: 3 }
+    }
+    expect(channels(state, action)).toEqual([
       { name: 'Lorem', id: 3 }
     ])
   })

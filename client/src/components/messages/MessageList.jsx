@@ -13,7 +13,8 @@ export class MessageList extends React.Component {
 }
 
 const mapStateMessageListProps = (state) => {
-  return { messages: state.messages }
+  let activeChannel = state.channels.find(c => c.active) || {}
+  return { messages: state.messages.filter(m => m.channel_id === activeChannel.id) }
 }
 
 export default connect(mapStateMessageListProps)(MessageList)

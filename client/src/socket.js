@@ -29,7 +29,7 @@ class Socket {
   message(e) {
     try {
       const message = JSON.parse(e.data)
-      console.log(message)
+      console.debug(message)
       this.ee.emit(message.name, message.data)
     }
     catch(err) {}
