@@ -1,5 +1,5 @@
 import expect from 'expect'
-import deepFreeze from '../../../utils/deep-freeze'
+import deepFreeze from '../../../../../utils/deep-freeze'
 import messages from '../../../../src/components/messages/MessageReducer'
 
 describe('reducer', () => {

@@ -1,5 +1,5 @@
 import expect from 'expect'
-import deepFreeze from '../../../utils/deep-freeze'
+import deepFreeze from '../../../../../utils/deep-freeze'
 import channels from '../../../../src/components/channels/ChannelReducer'
 import {removeChannel, setActiveChannel} from '../../../../src/components/channels/ChannelActions'
 

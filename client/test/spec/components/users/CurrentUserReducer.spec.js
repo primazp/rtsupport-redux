@@ -1,5 +1,5 @@
 import expect from 'expect'
-import deepFreeze from '../../../utils/deep-freeze'
+import deepFreeze from '../../../../../utils/deep-freeze'
 import reducer, {setUserName} from '../../../../src/components/users/CurrentUserReducer'
 
 describe('reducer', () => {

@@ -1,3 +1,5 @@
+'use strict'
+
 const deepFreeze = (o) => {
   var prop, propKey;
   Object.freeze(o);
@@ -10,4 +12,5 @@ const deepFreeze = (o) => {
   }
 }
 
-export default deepFreeze
+exports['default'] = deepFreeze
+module.exports = deepFreeze
