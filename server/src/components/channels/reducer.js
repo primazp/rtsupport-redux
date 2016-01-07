@@ -1,27 +1,20 @@
 'use strict';
 
-var Channel = require('./channel');
-var SocketService = require('../../services/socket')
+let Channel = require('./channel');
+let SocketService = require('../../services/socket');
+let Actions = require('./actions');
 
 function addChannel(state, action){
-  let nextState;
   let channel = new Channel(action.name);
+  SocketService.send(Actions.addChannel(channel));
   if(state.find(c => c.name === action.name)) {
-    nextState = state;
+    return state;
   } else {
-    nextState = [
+    return [
       ...state,
       channel
     ]
   }
-  if('ws' in action) {
-    let clientAction = {
-      type: 'CHANNEL_ADD',
-      channel: channel
-    }
-    SocketService.send(clientAction, action.ws);
-  }
-  return nextState;
 }
 
 function reducer(state, action) {

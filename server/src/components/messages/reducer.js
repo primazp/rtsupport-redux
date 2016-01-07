@@ -1,18 +1,13 @@
 'use strict';
 
-var Message = require('./message');
-var SocketService = require('../../services/socket')
+let Message = require('./message');
+let SocketService = require('../../services/socket');
+let Actions = require('./actions');
 
 function addMessage(state, action){
   let nextState;
   let message = new Message(action.body, action.author, action.channel_id);
-  if('ws' in action) {
-    let clientAction = {
-      type: 'MESSAGE_ADD',
-      message: message
-    }
-    SocketService.send(clientAction, action.ws);
-  }
+  SocketService.send(Actions.addMessage(message));
   return [
     ...state,
     message

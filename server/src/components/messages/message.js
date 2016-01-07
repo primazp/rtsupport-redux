@@ -1,6 +1,6 @@
 'use strict';
 
-var id = 1;
+let id = 1;
 class Message {
   constructor(body, author, channel_id) {
     this.id = id++;
