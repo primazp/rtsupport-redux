@@ -1,5 +1,8 @@
 export function setUserName(name) {
   return {
+    meta: {
+      server: true
+    },
     type: 'CURRENT_USER_SET_NAME',
     name
   }

@@ -1,10 +1,19 @@
 export function setActiveChannel(channel) {
-  return { type: 'CHANNEL_SET_ACTIVE', id: channel.id }
+  return {
+    meta: {
+      server: true
+    },
+    type: 'CHANNEL_SET_ACTIVE',
+    id: channel.id
+  }
 }
 
 let autoId = 3
 export function addChannel(name) {
   return {
+    meta: {
+      server: true
+    },
     type: 'CHANNEL_ADD',
     id: autoId++,
     name

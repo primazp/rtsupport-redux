@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var entry = [
-  './src/index.jsx'
+  './client/src/index.jsx'
 ];
 
 if (process.env.NODE_ENV !== 'production') {
@@ -28,12 +28,12 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/client/dist',
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: './client/dist',
     hot: true
   },
   plugins: [

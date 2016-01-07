@@ -10,19 +10,7 @@ import Socket from './socket'
 import {remoteAction} from './middleware'
 import {connect} from './components/connect'
 import createLogger from 'redux-logger'
-import promiseMiddleware from 'redux-simple-promise'
 import {AppLoader} from './components/Loader'
-
-/* SAMPLE DATA */
-const defaultStore = {
-  channels: [
-    {id: 0, name: 'Hardware Support'},
-    {id: 2, name: 'Software Support'}
-  ],
-  users: [
-    {id: 0, name: 'Jane Doe'}
-  ]
-}
 
 let socket = new Socket()
 const logger = createLogger()
@@ -32,10 +20,9 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
-socket.on('connect', (state = defaultStore) => {
+socket.on('state', (state) => {
   let createStoreWithMiddleware = applyMiddleware(
     remoteAction(socket),
-    promiseMiddleware(),
     logger
   )(createStore)
   const store = createStoreWithMiddleware(reducer, state)
@@ -47,12 +34,8 @@ socket.on('connect', (state = defaultStore) => {
     </Provider>,
     document.getElementById('app')
   )
-
-  socket.emit('CHANNEL_SUBSCRIBE')
-  socket.emit('USER_SUBSCRIBE')
 })
 
 socket.on('action', (action) => {
-  console.debug('action from server', action)
-  // store.dispatch(action)
+  store.dispatch(action)
 })

@@ -1,7 +1,15 @@
 import {EventEmitter} from 'events'
 
+let host;
+
+if (location.hostname == 'localhost') {
+  host = 'ws://localhost:5000'
+} else {
+  host = location.origin.replace(/^http/, 'ws')
+}
+
 class Socket {
-  constructor(ws = new WebSocket('wss://echo.websocket.org/'), ee = new EventEmitter()) {
+  constructor(ws = new WebSocket(host), ee = new EventEmitter()) {
     this.ws = ws
     this.ee = ee
     ws.onmessage = this.message.bind(this)
@@ -21,6 +29,7 @@ class Socket {
   message(e) {
     try {
       const message = JSON.parse(e.data)
+      console.log(message)
       this.ee.emit(message.name, message.data)
     }
     catch(err) {}
